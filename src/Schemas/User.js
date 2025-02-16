@@ -22,7 +22,6 @@ const Userschema = new mongoose.Schema({
     },
     avatar:{
         type:String,
-        required:true
     },
     TopicScore:[
         {
@@ -40,9 +39,9 @@ Userschema.pre('save', function (next) {
     const user = this;
     user.avatar = `https://robohash.org/${user.username}`;
 
-    const salt = bcrypt.genSaltSync(9);
-    const hashedPassword = bcrypt.hashSync(user.password, salt);
-    user.password = hashedPassword;
+    // const salt = bcrypt.genSaltSync(9);
+    // const hashedPassword = bcrypt.hashSync(user.password, salt);
+    // user.password = hashedPassword;
     next();
 })
 
