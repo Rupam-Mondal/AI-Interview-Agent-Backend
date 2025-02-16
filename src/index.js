@@ -1,4 +1,5 @@
 import express from 'express';
+import { ConnectDb } from './Config/Dbconfig.js';
 
 const app = express();
 
@@ -11,4 +12,5 @@ app.get('/ping' , (req , res) => {
 
 app.listen(3000 , () => {
     console.log("Server is Running");
+    ConnectDb();
 });
