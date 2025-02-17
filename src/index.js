@@ -3,6 +3,7 @@ import { ConnectDb } from './Config/Dbconfig.js';
 import UserRouter from './Routes/UserRouter.js';
 import cors from 'cors';
 import { IsAuthenticated } from './Middlewares/Authmiddleware.js';
+import ModelRouter from './Routes/ModelRouter.js';
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.get('/ping', IsAuthenticated , (req , res) => {
 });
 
 app.use('/user', UserRouter);
+app.use('/interview', ModelRouter);
 
 app.listen(3000 , () => {
     console.log("Server is Running");
