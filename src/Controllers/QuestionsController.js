@@ -6,9 +6,7 @@ export async function QuestionController(req , res){
             topic:req.body.topic,
             experience:req.body.experience
         }
-        console.log(questionObject)
         const response = await QuestionService(questionObject);
-        console.log(response);
         if(!response){
             throw null;
         }
