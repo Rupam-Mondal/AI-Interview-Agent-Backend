@@ -33,6 +33,12 @@ const Userschema = new mongoose.Schema({
                 type:Number
             }
         }
+    ],
+    Interviews:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Interview"
+        }
     ]
 } , {timestamps:true});
 
