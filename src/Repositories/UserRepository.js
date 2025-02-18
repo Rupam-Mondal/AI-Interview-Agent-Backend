@@ -10,6 +10,16 @@ export async function CreateUser(UserObject){
     }
 }
 
+export async function GetUserById(Id){
+    try {
+        const response = await User.findById(Id).populate('Interviews');
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 export async function findUserByEmail(email) {
     try {
         const response = await User.findOne({ email });

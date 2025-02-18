@@ -1,6 +1,6 @@
 import Interview from "../Schemas/Interview.js";
 
-export async function Create(InterviewObject){
+export async function CreateInterview(InterviewObject){
     try {
         const response = await Interview.create(InterviewObject);
         return response;

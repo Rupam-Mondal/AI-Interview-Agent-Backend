@@ -6,7 +6,8 @@ export async function QuestionController(req , res){
             topic:req.body.topic,
             experience:req.body.experience
         }
-        const response = await QuestionService(questionObject);
+        const userId = req?.user?.id;
+        const response = await QuestionService(questionObject , userId);
         if(!response){
             throw null;
         }

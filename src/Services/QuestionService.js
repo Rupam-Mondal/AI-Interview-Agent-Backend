@@ -1,6 +1,8 @@
 import { GetQuestionsInterview } from "../Apis/Gptapi.js";
+import { CreateInterview } from "../Repositories/InterviewRepository.js";
+import { GetUserById } from "../Repositories/UserRepository.js";
 
-export async function QuestionService({ topic, experience }){
+export async function QuestionService({ topic, experience }, userId){
     try {
         const response = await GetQuestionsInterview(topic , experience);
         console.log(typeof response);
@@ -8,6 +10,16 @@ export async function QuestionService({ topic, experience }){
             throw null;
         }
         const arr = response.split("\n");
+        const InterviewObject = {
+            Topic:topic,
+            level:experience,
+            user:userId,
+            questions:arr
+        }
+        const InterviewResponse = await CreateInterview(InterviewObject);
+        const User = await GetUserById(userId);
+        User.Interviews.push(InterviewResponse._id);
+        await User.save();
         return arr;
     } catch (error) {
         console.log(error);
