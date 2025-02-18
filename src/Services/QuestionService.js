@@ -7,19 +7,8 @@ export async function QuestionService({ topic, experience }){
         if (!response) {
             throw null;
         }
-        const arr = [];
-        let k = 0;
-        let i = 0;
-        while(i < response.length){
-            if(response[i] != '/n'){
-                arr[k] += response[i];
-            }
-            else{
-                k++;
-            }
-            i++;
-        }
-        return response;
+        const arr = response.split("\n");
+        return arr;
     } catch (error) {
         console.log(error);
         throw error;
