@@ -18,3 +18,13 @@ export async function GetInterviewById(Id){
         throw error;
     }
 }
+
+export async function GetInterviewByUserId(userId){
+    try {
+        const response = await Interview.find({ user : userId}).populate('user');
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
