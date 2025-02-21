@@ -30,6 +30,9 @@ export async function SampleQuestionController(req , res){
             name:req?.body?.topic
         }
         const response = await GetsampleQuestionsService(object);
+        if (!response) {
+            throw null;
+        }
         return res.json({
             success:true,
             message:"Questions fetched successfully",

@@ -31,6 +31,9 @@ export async function QuestionService({ topic, experience }, userId){
 export async function GetsampleQuestionsService({name}){
     try {
         const response = await GetSampleQuestionByTopicName(name);
+        if(!response){
+            throw null;
+        }
         return response;
     } catch (error) {
         throw error;

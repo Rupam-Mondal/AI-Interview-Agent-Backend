@@ -6,6 +6,6 @@ export async function GetSampleQuestionByTopicName(name){
         return response;
     } catch (error) {
         console.log(error);
-        throw error;
+        return null;
     }
 }
