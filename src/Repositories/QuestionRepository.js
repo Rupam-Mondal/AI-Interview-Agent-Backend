@@ -9,3 +9,12 @@ export async function GetSampleQuestionByTopicName(name){
         return null;
     }
 }
+
+export async function CreateTechnology(TechnologyObject){
+    try {
+        const response = await Technology.create(TechnologyObject);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}

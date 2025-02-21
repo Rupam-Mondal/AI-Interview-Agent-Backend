@@ -6,7 +6,6 @@ import { GetUserById } from "../Repositories/UserRepository.js";
 export async function QuestionService({ topic, experience }, userId){
     try {
         const response = await GetQuestionsInterview(topic , experience);
-        console.log(typeof response);
         if (!response) {
             throw null;
         }
