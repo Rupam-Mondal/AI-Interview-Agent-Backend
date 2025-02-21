@@ -1,6 +1,6 @@
 import { GetQuestionsInterview } from "../Apis/Gptapi.js";
 import { CreateInterview } from "../Repositories/InterviewRepository.js";
-import { GetSampleQuestionByTopicName } from "../Repositories/QuestionRepository.js";
+import { CreateTechnology, GetSampleQuestionByTopicName } from "../Repositories/QuestionRepository.js";
 import { GetUserById } from "../Repositories/UserRepository.js";
 
 export async function QuestionService({ topic, experience }, userId){
@@ -20,6 +20,18 @@ export async function QuestionService({ topic, experience }, userId){
         const User = await GetUserById(userId);
         User.Interviews.push(InterviewResponse._id);
         await User.save();
+        const Technology = await GetSampleQuestionByTopicName(topic);
+        if (!Technology) {
+            const Object = {
+                name:topic,
+                questions:arr
+            }
+            await CreateTechnology(Object);
+        }
+        else{
+            Technology.questions = [...Technology.questions, ...arr];
+            await Technology.save();
+        }
         return arr;
     } catch (error) {
         console.log(error);
