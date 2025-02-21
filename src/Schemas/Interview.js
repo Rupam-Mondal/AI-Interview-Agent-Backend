@@ -16,6 +16,9 @@ const InterviewSchema = new mongoose.Schema({
     questions: {
         type: [String], 
         required: true
+    },
+    score:{
+        type:Number,
     }
 } , {timestamps:true});
 

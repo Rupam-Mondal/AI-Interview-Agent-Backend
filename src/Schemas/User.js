@@ -24,16 +24,6 @@ const Userschema = new mongoose.Schema({
     avatar:{
         type:String,
     },
-    TopicScore:[
-        {
-            Topic:{
-                type:String
-            },
-            Number:{
-                type:Number
-            }
-        }
-    ],
     Interviews:[
         {
             type: mongoose.Schema.Types.ObjectId,
