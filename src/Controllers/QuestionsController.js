@@ -45,3 +45,23 @@ export async function SampleQuestionController(req , res){
         })
     }
 }
+
+export async function GetSampleQuestionController(req , res){
+    try {
+        const name = req.body.topic;
+        const response = await GetsampleQuestionsService({name});
+        if(!response){
+            throw null;
+        }
+        return res.json({
+            success:true,
+            message:"Sample question fetched successfully",
+            data:response
+        })
+    } catch (error) {
+        return res.json({
+            success: false,
+            message: "Something went wrong"
+        })
+    }
+}
