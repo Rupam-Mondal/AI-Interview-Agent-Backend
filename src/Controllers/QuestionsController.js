@@ -65,3 +65,21 @@ export async function GetSampleQuestionController(req , res){
         })
     }
 }
+
+export async function AnalyseQuestionsController(req , res){
+    try {
+        const AnalysisObject = req.body.analysisObject;
+        const response = await AnalyseService(AnalysisObject);
+        if(!response) throw null;
+        return res.json({
+            success:true,
+            message:"Analysis is successfull",
+            data:response
+        });
+    } catch (error) {
+        return res.json({
+            success:false,
+            message:"Something went wrong"
+        });
+    }
+}

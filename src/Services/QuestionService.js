@@ -1,3 +1,4 @@
+import { Analysis } from "../Apis/Answeranalysis.js";
 import { GetQuestionsInterview } from "../Apis/Gptapi.js";
 import { CreateInterview } from "../Repositories/InterviewRepository.js";
 import { CreateTechnology, GetSampleQuestionByTopicName } from "../Repositories/QuestionRepository.js";
@@ -47,6 +48,18 @@ export async function GetsampleQuestionsService({name}){
         }
         return response;
     } catch (error) {
+        throw error;
+    }
+}
+
+export async function AnalyseService(Object){
+    try {
+        const response = await Analysis(Object);
+        if(!response) throw null;
+        const arr = response.split("\n");
+        return arr;
+    } catch (error) {
+        console.log(error);
         throw error;
     }
 }

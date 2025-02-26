@@ -25,7 +25,7 @@ export async function findUserByEmail(email) {
         const response = await User.findOne({ email });
         return response;
     } catch (error) {
-        console.log("Something went wrong");
+        console.log(error);
         return null;
     }
 }
