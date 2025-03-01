@@ -6,7 +6,7 @@ export async function Analysis(Object) {
             messages: [
                 { role: "developer", content: "" },
                 {
-                    role: "user", content: `Analyse these answer with respect to question ${Object}
+                    role: "user", content: `Analyse these answer with respect to question ${JSON.stringify(Object.questions)}
                                         write scope of improvements for each question, 
                                         do not write extra sentence ans also give marks out of 5` }
             ],

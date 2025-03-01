@@ -1,4 +1,4 @@
-import { GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
+import { AnalyseService, GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
 
 export async function QuestionController(req , res){
     try {
@@ -69,6 +69,7 @@ export async function GetSampleQuestionController(req , res){
 export async function AnalyseQuestionsController(req , res){
     try {
         const AnalysisObject = req.body.analysisObject;
+        console.log(AnalysisObject)
         const response = await AnalyseService(AnalysisObject);
         if(!response) throw null;
         return res.json({
