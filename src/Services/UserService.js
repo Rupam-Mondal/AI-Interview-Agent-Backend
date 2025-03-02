@@ -33,6 +33,7 @@ export async function SigninService(SigninObject){
             email: User.email,
             username: User.username,
             role: User.role,
+            avatar:User.avatar,
             token: token
         }
     } catch (error) {
