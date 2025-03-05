@@ -1,4 +1,4 @@
-import { AnalyseService, GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
+import { AnalyseService, AskOurAiService, GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
 
 export async function QuestionController(req , res){
     try {
@@ -82,5 +82,22 @@ export async function AnalyseQuestionsController(req , res){
             success:false,
             message:"Something went wrong"
         });
+    }
+}
+
+export async function AskOurAiController(req , res){
+    try {
+        const UserQuestion = req?.body?.question;
+        const response = await AskOurAiService(UserQuestion);
+        return res.json({
+            success:true,
+            message:"Question answered successfully",
+            data:response
+        })
+    } catch (error) {
+        return res.json({
+            success:false,
+            message:"Something went wrong"
+        })
     }
 }

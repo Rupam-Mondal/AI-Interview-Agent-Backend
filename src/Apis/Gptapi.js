@@ -15,3 +15,19 @@ export async function GetQuestionsInterview(topic , experience) {
         throw error;
     }
 }
+
+export async function GetquestionAnswerGPT(Question){
+    try {
+        const response = await client.chat.completions.create({
+            messages: [
+                { role: "developer", content: "" },
+                { role: "user", content: `${Question} in short` }
+            ],
+            model: "o3-mini"
+        });
+
+        return response.choices[0].message.content;
+    } catch (error) {
+        throw error;
+    }
+}

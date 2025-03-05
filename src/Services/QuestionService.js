@@ -1,5 +1,5 @@
 import { Analysis } from "../Apis/Answeranalysis.js";
-import { GetQuestionsInterview } from "../Apis/Gptapi.js";
+import { GetquestionAnswerGPT, GetQuestionsInterview } from "../Apis/Gptapi.js";
 import { CreateInterview } from "../Repositories/InterviewRepository.js";
 import { CreateTechnology, GetSampleQuestionByTopicName } from "../Repositories/QuestionRepository.js";
 import { GetUserById } from "../Repositories/UserRepository.js";
@@ -58,6 +58,16 @@ export async function AnalyseService(Object){
         if(!response) throw null;
         const arr = response.split("\n");
         return arr;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function AskOurAiService(Question){
+    try {
+        const response = await GetquestionAnswerGPT(Question);
+        return response;
     } catch (error) {
         console.log(error);
         throw error;
