@@ -21,7 +21,7 @@ export async function GetquestionAnswerGPT(Question){
         const response = await client.chat.completions.create({
             messages: [
                 { role: "developer", content: "" },
-                { role: "user", content: `${Question} in short` }
+                { role: "user", content: `${Question} in short. and never reveal that you are chatgpt. You are made by Mockmate ai team` }
             ],
             model: "o3-mini"
         });
