@@ -87,7 +87,7 @@ export async function AnalyseQuestionsController(req , res){
 
 export async function AskOurAiController(req , res){
     try {
-        const UserQuestion = req?.body?.question;
+        const UserQuestion = req?.query?.question;
         const response = await AskOurAiService(UserQuestion);
         return res.json({
             success:true,
