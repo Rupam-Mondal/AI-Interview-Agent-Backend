@@ -1,4 +1,4 @@
-import client from "../Config/OpenAiConfig.js";
+import client from "../Config/OpenaiConfig.js";
 
 export async function Analysis(Object) {
     try {
