@@ -18,6 +18,7 @@ The backend is deployed on Render and can be accessed at:
 
 ## Usage
 To use the backend, make HTTP requests to the provided endpoints. Detailed API documentation will be provided soon.
+- [documentation](InterviewApis.postman_collection.json)
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
