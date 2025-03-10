@@ -48,7 +48,7 @@ export async function SampleQuestionController(req , res){
 
 export async function GetSampleQuestionController(req , res){
     try {
-        const name = req.body.topic;
+        const name = req?.query?.topic;
         const response = await GetsampleQuestionsService({name});
         if(!response){
             throw null;
