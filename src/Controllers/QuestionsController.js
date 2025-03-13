@@ -3,8 +3,8 @@ import { AnalyseService, AskOurAiService, GetsampleQuestionsService, QuestionSer
 export async function QuestionController(req , res){
     try {
         const questionObject = {
-            topic:req.body.topic,
-            experience:req.body.experience
+            topic:req?.query?.topic,
+            experience:req?.query?.experience
         }
         const userId = req?.user?.id;
         const response = await QuestionService(questionObject , userId);
