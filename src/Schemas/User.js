@@ -32,14 +32,18 @@ const Userschema = new mongoose.Schema({
     ]
 } , {timestamps:true});
 
-Userschema.pre('save', function (next) {
+Userschema.pre('save', async function (next) {
     const user = this;
     user.avatar = `https://robohash.org/${user.username}`;
 
-    const salt = bcrypt.genSaltSync(9);
-    const hashedPassword = bcrypt.hashSync(user.password, salt);
-    user.password = hashedPassword;
-    next();
+    if (!user.isModified("password")) return next();
+    try {
+        const salt = await bcrypt.genSalt(10); 
+        user.password = await bcrypt.hash(user.password, salt);
+        next();
+    } catch (err) {
+        next(err);
+    }
 })
 
 const User = mongoose.model("User" , Userschema);

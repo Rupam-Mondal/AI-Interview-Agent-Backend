@@ -23,7 +23,8 @@ export async function SigninService(SigninObject){
             throw null;
         }
 
-        const response = bcrypt.compareSync(SigninObject.password , User.password);
+        const response = await bcrypt.compare(SigninObject.password , User.password);
+        console.log(response);
         if (!response) {
             throw null;
         }

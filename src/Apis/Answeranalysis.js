@@ -8,7 +8,7 @@ export async function Analysis(Object) {
                 {
                     role: "user", content: `Analyse these answer with respect to question ${JSON.stringify(Object)}
                                         write scope of improvements for each question, 
-                                        do not write extra sentence and also give marks out of 5, also give total marks at end` }
+                                        do not write extra sentence and also give marks out of 5, also give total marks at end, also attack the topic name at last` }
             ],
             model: "o3-mini"
         });
