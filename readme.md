@@ -1,4 +1,4 @@
-# AI Interview Agent Backend
+# Backend
 
 This backend service provides an AI-powered interview agent where users can:
 - Get questions related to various tech stacks.
@@ -8,7 +8,7 @@ This backend service provides an AI-powered interview agent where users can:
 
 ## Deployed Backend
 The backend is deployed on Render and can be accessed at:
-[AI Interview Agent Backend](https://ai-interview-agent-backend.onrender.com)
+[Backend](https://ai-interview-agent-backend.onrender.com)
 
 ## Features
 - **Tech Stack Questions**: Users can retrieve questions related to different technology stacks.
