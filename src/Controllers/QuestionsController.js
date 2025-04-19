@@ -1,3 +1,4 @@
+import { GetQuestionOnResume } from "../Apis/Gptapi.js";
 import { AnalyseService, AskOurAiService, GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
 import fs from 'fs/promises';
 
@@ -119,7 +120,16 @@ export async function getQuestionOnResume(req, res) {
         const parsed = await pdfParse(buffer);
         const resumeText = parsed.text;
 
-        
+        const data = await GetQuestionOnResume(resumeText);
+        if(!data) {
+            throw null;
+        }
+        const questionsArray = data.split('\n\n');
+        return res.json({
+            success: true,
+            message: "Questions fetched successfully",
+            data: questionsArray
+        });
     } catch (error) {
         console.error(error);
         return res.status(500).json({

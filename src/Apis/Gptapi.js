@@ -31,3 +31,19 @@ export async function GetquestionAnswerGPT(Question){
         throw error;
     }
 }
+
+export async function GetQuestionOnResume(Text){
+    try {
+        const response = await client.chat.completions.create({
+            messages: [
+                { role: "developer", content: "" },
+                { role: "user", content: `You are an AI recruiter. Based on the resume below, generate 5 interview questions : ${Text}` }
+            ],
+            model: "o3-mini"
+        });
+
+        return response.choices[0].message.content;
+    } catch (error) {
+        throw error;
+    }
+}
