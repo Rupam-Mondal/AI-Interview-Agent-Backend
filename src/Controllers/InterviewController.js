@@ -29,7 +29,7 @@ export async function CodeStepController(req , res){
             })
         }
         const data = await GetCodeStep(code);
-        const animationSteps = JSON.parse(data.data);
+        const animationSteps = JSON.parse(data);
         return res.json({
             success:true,
             message:"Data fetched successfully",
