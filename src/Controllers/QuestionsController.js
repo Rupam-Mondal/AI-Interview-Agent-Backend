@@ -101,3 +101,14 @@ export async function AskOurAiController(req , res){
         })
     }
 }
+
+export async function getQuestionOnResume(req , res){
+    try {
+        
+    } catch (error) {
+        return res.json({
+            success: false,
+            message: "Something went wrong"
+        })
+    }
+}
