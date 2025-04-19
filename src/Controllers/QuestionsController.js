@@ -1,4 +1,5 @@
 import { AnalyseService, AskOurAiService, GetsampleQuestionsService, QuestionService } from "../Services/QuestionService.js";
+import fs from 'fs/promises';
 
 export async function QuestionController(req , res){
     try {
@@ -102,13 +103,28 @@ export async function AskOurAiController(req , res){
     }
 }
 
-export async function getQuestionOnResume(req , res){
+export async function getQuestionOnResume(req, res) {
     try {
+        const pdfParse = (await import('pdf-parse/lib/pdf-parse.js')).default;
+        const file = req?.file;
+
+        if (!file) {
+            return res.status(400).json({
+                success: false,
+                message: "No file uploaded"
+            });
+        }
+
+        const buffer = await fs.readFile(file.path);
+        const parsed = await pdfParse(buffer);
+        const resumeText = parsed.text;
+
         
     } catch (error) {
-        return res.json({
+        console.error(error);
+        return res.status(500).json({
             success: false,
-            message: "Something went wrong"
-        })
+            message: error
+        });
     }
 }
