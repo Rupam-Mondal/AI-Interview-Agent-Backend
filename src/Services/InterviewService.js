@@ -8,3 +8,6 @@ export async function GetInterviewByUserIdService(userId){
         throw error;
     }
 }
+export async function GetCodeStep(code){
+    
+}

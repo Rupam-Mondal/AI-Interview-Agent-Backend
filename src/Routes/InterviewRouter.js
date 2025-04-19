@@ -1,6 +1,6 @@
 import express from 'express';
 import { IsAuthenticated } from '../Middlewares/Authmiddleware.js';
-import { GetUserInterviewController } from '../Controllers/InterviewController.js';
+import { CodeStepController, GetUserInterviewController } from '../Controllers/InterviewController.js';
 import { AnalyseQuestionsController, AskOurAiController, getQuestionOnResume, GetSampleQuestionController } from '../Controllers/QuestionsController.js';
 import upload from '../Config/MulterConfig.js';
 
@@ -11,5 +11,6 @@ InterviewRouter.get('/samplequestion', IsAuthenticated, GetSampleQuestionControl
 InterviewRouter.post('/analysis', IsAuthenticated, AnalyseQuestionsController);
 InterviewRouter.get('/askourai', IsAuthenticated, AskOurAiController);
 InterviewRouter.post('/resume/pdf', upload.single('resume'), getQuestionOnResume);
+InterviewRouter.post('/codestep', CodeStepController);
 
 export default InterviewRouter;
