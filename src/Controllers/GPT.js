@@ -3,7 +3,7 @@ import { AzureKeyCredential } from "@azure/core-auth";
 import { openaiKey, openaikey1 } from "../Config/ServerConfig.js";
 
 // Azure/OpenAI setup
-const token = openaikey1;
+const token = openaiKey;
 const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 

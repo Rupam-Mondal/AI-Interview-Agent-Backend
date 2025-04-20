@@ -124,7 +124,7 @@ export async function getQuestionOnResume(req, res) {
         if(!data) {
             throw null;
         }
-        const questionsArray = data.split('\n\n');
+        const questionsArray = data.split('\n');
         await fs.unlink(file.path);
         return res.json({
             success: true,
